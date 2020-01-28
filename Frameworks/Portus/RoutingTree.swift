@@ -84,3 +84,18 @@ extension RoutingTree: CustomStringConvertible {
         return description
     }
 }
+
+extension RoutingTree {
+    public func routable(_ routable: Routable, didUpdateContextWithPreviousContext previousContext: RoutingContext?) {
+        // tempory save entry with old context to find the corresponding entry
+        let previousEntry = routable.entry
+        previousEntry.context = previousContext
+
+        guard let node = root?.findNode(for: previousEntry) else {
+            fatalError("[RoutingTree] Error: Node with identifier: \(previousEntry.identifier.rawValue) not found.")
+        }
+
+        // update the context for the given node
+        node.entry.context = routable.entry.context
+    }
+}
