@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "Portus",
-    platforms: [.iOS("8.0"), .tvOS("9.0")],
+    platforms: [.iOS("9.0"), .tvOS("9.0")],
     products: [
         .library(name: "Portus", targets: ["Portus"])
     ],
